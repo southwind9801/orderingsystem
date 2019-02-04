@@ -1,7 +1,7 @@
 spring:
   cloud:
     config:
-      name: account #配置文件名称
+      name: account #对应的配置文件名称
       label: master #git仓库分支名
       discovery:
         enabled: true
