@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="account" />
         <module name="configserver" />
+        <module name="menu" />
         <module name="registrycenter" />
       </profile>
     </annotationProcessing>
@@ -16,6 +17,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="account" options="-parameters" />
       <module name="configserver" options="-parameters" />
+      <module name="menu" options="-parameters" />
       <module name="orderingsystem" options="-parameters" />
       <module name="registrycenter" options="-parameters" />
     </option>

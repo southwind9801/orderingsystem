@@ -1,8 +1,8 @@
 server:
-  port: 8010
+  port: 8020
 spring:
   application:
-    name: account
+    name: menu
   datasource:
     name: orderingsystem
     url: jdbc:mysql://localhost:3306/orderingsystem?useUnicode=true&characterEncoding=UTF-8

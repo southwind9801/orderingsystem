@@ -12,6 +12,7 @@
         <module>registrycenter</module>
         <module>account</module>
         <module>configserver</module>
+        <module>menu</module>
     </modules>
 
     <!-- 引入Spring Boot依赖 -->

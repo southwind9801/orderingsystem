@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.southwind.repository")
-public class AccountApplication {
+public class MenuApplication {
     public static void main(String[] args) {
-        SpringApplication.run(AccountApplication.class,args);
+        SpringApplication.run(MenuApplication.class,args);
     }
 }
