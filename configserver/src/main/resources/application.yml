@@ -1,0 +1,21 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: configserver
+  cloud:
+    bus:
+      trace:
+        enable: true
+    config:
+      server:
+        git:
+          uri: https://github.com/southwind9801/scdemo.git #git仓库地址
+          searchPaths: config #仓库路径
+          username: southwind9801 #git仓库用户名
+          password: ning135729 #git仓库密码
+      label: master #git仓库的分支
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
