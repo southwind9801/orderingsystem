@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="account" />
+        <module name="clientfeign" />
         <module name="configserver" />
         <module name="menu" />
         <module name="registrycenter" />
@@ -16,6 +17,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="account" options="-parameters" />
+      <module name="clientfeign" options="-parameters" />
       <module name="configserver" options="-parameters" />
       <module name="menu" options="-parameters" />
       <module name="orderingsystem" options="-parameters" />

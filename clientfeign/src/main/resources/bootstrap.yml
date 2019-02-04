@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    config:
+      name: clientfeign #对应的配置文件名称
+      label: master #git仓库分支名
+      discovery:
+        enabled: true
+        serviceId: configserver #连接的配置中心名称
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

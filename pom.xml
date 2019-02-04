@@ -13,6 +13,7 @@
         <module>account</module>
         <module>configserver</module>
         <module>menu</module>
+        <module>clientfeign</module>
     </modules>
 
     <!-- 引入Spring Boot依赖 -->
