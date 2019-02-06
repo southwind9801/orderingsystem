@@ -10,6 +10,7 @@
         <module name="clientfeign" />
         <module name="configserver" />
         <module name="menu" />
+        <module name="order" />
         <module name="registrycenter" />
       </profile>
     </annotationProcessing>
@@ -20,6 +21,7 @@
       <module name="clientfeign" options="-parameters" />
       <module name="configserver" options="-parameters" />
       <module name="menu" options="-parameters" />
+      <module name="order" options="-parameters" />
       <module name="orderingsystem" options="-parameters" />
       <module name="registrycenter" options="-parameters" />
     </option>

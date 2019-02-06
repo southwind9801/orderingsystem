@@ -1,5 +1,6 @@
 package com.southwind.controller;
 
+import com.southwind.entity.Account;
 import com.southwind.repository.AdminRepository;
 import com.southwind.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +19,16 @@ public class AccountHandler {
     private AdminRepository adminRepository;
 
     @GetMapping("/login/{username}/{password}/{type}")
-    public Object index(@PathVariable("username") String username,@PathVariable("password") String password,@PathVariable("type") String type){
-        Object object = null;
+    public Account login(@PathVariable("username") String username,@PathVariable("password") String password,@PathVariable("type") String type){
+        Account account = null;
         switch (type){
             case "user":
-                object = userRepository.login(username, password);
+                account = userRepository.login(username, password);
                 break;
             case "admin":
-                object = adminRepository.login(username, password);
+                account = adminRepository.login(username, password);
                 break;
         }
-        return object;
+        return account;
     }
 }

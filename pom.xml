@@ -14,6 +14,7 @@
         <module>configserver</module>
         <module>menu</module>
         <module>clientfeign</module>
+        <module>order</module>
     </modules>
 
     <!-- 引入Spring Boot依赖 -->
