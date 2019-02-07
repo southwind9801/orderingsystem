@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Component
-@WebFilter(urlPatterns = {"/index.html","/account/redirect/index"},filterName = "userFilter")
+@WebFilter(urlPatterns = {"/index.html","/account/redirect/index","/order.html","/account/redirect/order"},filterName = "userFilter")
 public class UserFilter implements Filter {
 
     @Override

@@ -40,7 +40,7 @@ public class MenuHandler {
     }
 
     @GetMapping("/findById/{id}")
-    public Menu findById(@PathVariable("id") int id){
+    public Menu findById(@PathVariable("id") long id){
         Menu menu = menuRepository.findById(id);
         return menuRepository.findById(id);
     }

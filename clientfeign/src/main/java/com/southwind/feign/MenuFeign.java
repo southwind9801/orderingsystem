@@ -21,11 +21,11 @@ public interface MenuFeign {
     public void save(@RequestBody Menu menu);
 
     @GetMapping("/menu/findById/{id}")
-    public Menu findById(@PathVariable("id") int id);
+    public Menu findById(@PathVariable("id") long id);
 
     @PutMapping("/menu/update")
     public void update(@RequestBody Menu menu);
 
     @DeleteMapping("/menu/deleteById/{id}")
-    public void deleteById(@PathVariable("id") int id);
+    public void deleteById(@PathVariable("id") long id);
 }

@@ -3,6 +3,7 @@ package com.southwind.controller;
 import com.southwind.entity.Menu;
 import com.southwind.entity.MenuVO;
 import com.southwind.feign.MenuFeign;
+import com.southwind.feign.OrderFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,8 @@ public class MenuHandler {
 
     @Autowired
     private MenuFeign menuFeign;
+    @Autowired
+    private OrderFeign orderFeign;
 
     @GetMapping("/findAll")
     @ResponseBody
@@ -30,11 +33,11 @@ public class MenuHandler {
     @PostMapping("/save")
     public String save(Menu menu){
         menuFeign.save(menu);
-        return "menu_manage";
+        return "redirect:/account/redirect/menu_manage";
     }
 
     @GetMapping("/findById/{id}")
-    public String findById(@PathVariable("id") int id,Model model){
+    public String findById(@PathVariable("id") long id,Model model){
         model.addAttribute("list",menuFeign.findAll());
         model.addAttribute("menu",menuFeign.findById(id));
         return "menu_update";
@@ -43,12 +46,13 @@ public class MenuHandler {
     @PostMapping("/update")
     public String update(Menu menu){
         menuFeign.update(menu);
-        return "menu_manage";
+        return "redirect:/account/redirect/menu_manage";
     }
 
     @GetMapping("/deleteById/{id}")
-    public String deleteById(@PathVariable("id") int id){
+    public String deleteById(@PathVariable("id") long id){
+        orderFeign.deleteByMid(id);
         menuFeign.deleteById(id);
-        return "menu_manage";
+        return "redirect:/account/redirect/menu_manage";
     }
 }

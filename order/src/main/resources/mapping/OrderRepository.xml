@@ -2,8 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.southwind.repository.OrderRepository">
 
+	<resultMap id="orderMap" type="Order">
+		<id property="id" column="oid"/>
+		<result property="date" column="date"/>
+		<!-- 映射user -->
+		<association property="menu" javaType="Menu">
+			<id property="id" column="mid"/>
+			<result property="name" column="name"/>
+			<result property="price" column="price"/>
+			<result property="flavor" column="flavor"/>
+		</association>
+	</resultMap>
+
 	<insert id="save" parameterType="Order">
 		insert into t_order(uid,mid,aid,date) values(#{user.id},#{menu.id},#{admin.id},#{date})
 	</insert>
+	
+	<select id="findAllByUid" resultMap="orderMap">
+		select m.id mid,m.name,m.price,m.flavor,o.id oid,o.date from t_order o,t_menu m where o.mid = m.id and o.uid = #{param1} order by oid limit #{param2},#{param3}
+	</select>
+
+	<select id="countByUid" parameterType="long" resultType="int">
+		select count(*) from t_order where uid = #{uid}
+	</select>
+
+	<delete id="deleteByMid" parameterType="long">
+		delete from t_order where mid = #{mid}
+	</delete>
 
 </mapper>

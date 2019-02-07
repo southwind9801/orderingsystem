@@ -27,7 +27,7 @@
 		insert into t_menu(name,price,flavor,tid) values(#{name},#{price},#{flavor},#{type.id})
 	</insert>
 
-	<select id="findById" parameterType="int" resultMap="menuMap">
+	<select id="findById" resultMap="menuMap">
 		select id mid,name mname,price,flavor,tid from t_menu where id = #{id}
 	</select>
 
@@ -35,7 +35,7 @@
 		update t_menu set name = #{name},price = #{price},flavor = #{flavor},tid = #{type.id} where id = #{id}
 	</update>
 
-	<delete id="deleteById" parameterType="int">
+	<delete id="deleteById" parameterType="long">
 		delete from t_menu where id = #{id}
 	</delete>
 </mapper>

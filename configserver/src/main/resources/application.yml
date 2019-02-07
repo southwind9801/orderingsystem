@@ -13,7 +13,7 @@ spring:
           uri: https://github.com/southwind9801/orderingsystem.git #git仓库地址
           searchPaths: config #仓库路径
           username: southwind9801 #git仓库用户名
-          password: ning135729 #git仓库密码
+          password: root #git仓库密码
       label: master #仓库的分支
 eureka:
   client:
