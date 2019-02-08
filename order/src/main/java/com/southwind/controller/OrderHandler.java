@@ -34,6 +34,11 @@ public class OrderHandler {
         orderRepository.deleteByMid(mid);
     }
 
+    @DeleteMapping("/deleteByUid/{uid}")
+    public void deleteByUid(@PathVariable("uid") long uid){
+        orderRepository.deleteByUid(uid);
+    }
+
     @GetMapping("/findAllByState/{state}/{page}/{limit}")
     public OrderVO findAllByState(@PathVariable("state") int state, @PathVariable("page") int page, @PathVariable("limit") int limit){
         OrderVO orderVO = new OrderVO();

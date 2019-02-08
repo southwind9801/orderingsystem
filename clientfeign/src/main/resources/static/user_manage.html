@@ -7,11 +7,10 @@
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
 </head>
 <body class="layui-layout-body">
-<div class="layui-container" style="margin-top: 50px;width: 750px;">
+<div class="layui-container" style="margin-top: 50px;width: 1000px;">
 
     <table class="layui-hide" id="test" style="width: 300px" lay-filter="test"></table>
     <script type="text/html" id="barDemo">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>
     <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
@@ -21,19 +20,18 @@
 
             table.render({
                 elem: '#test'
-                ,url:'/menu/findAll'
-                ,title: '菜单列表'
+                ,url:'/user/findAll'
+                ,title: '用户列表'
                 ,cols: [
                     [
-                        {field:'id', width:100, title: '编号', sort: true}
-                        ,{field:'name', width:200, title: '菜品'}
-                        ,{field:'price', width:100, title: '单价'}
-                        ,{field:'flavor', width:100, title: '口味'}
-                        ,{field:'tid',width:100,  title: '分类',templet:function(data){
-                            return data.type.name
-                        }
-                    }
-                    ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:120}
+                        {field:'id', width:70, title: '编号', sort: true}
+                        ,{field:'username', width:100, title: '用户名'}
+                        ,{field:'nickname', width:100, title: '昵称'}
+                        ,{field:'gender', width:70, title: '性别'}
+                        ,{field:'telephone', width:160, title: '联系电话'}
+                        ,{field:'registerdate', width:220, title: '注册日期'}
+                        ,{field:'address', width:200, title: '地址'}
+                        ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:80}
                 ]
                 ]
                 ,page: true
@@ -44,11 +42,9 @@
                 var data = obj.data;
                 if(obj.event === 'del'){
                     layer.confirm('确定要删除吗？', function(index){
-                        window.location.href="/menu/deleteById/"+data.id;
+                        window.location.href="/user/deleteById/"+data.id;
                         layer.close(index);
                     });
-                } else if(obj.event === 'edit'){
-                    window.location.href="/menu/findById/"+data.id;
                 }
             });
         });

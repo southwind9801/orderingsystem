@@ -6,6 +6,8 @@ import com.southwind.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping("/user")
 public class UserHandler {
@@ -24,18 +26,9 @@ public class UserHandler {
     }
 
     @PostMapping("/save")
-    public void save(@RequestBody User menu){
-        userRepository.save(menu);
-    }
-
-    @GetMapping("/findById/{id}")
-    public User findById(@PathVariable("id") long id){
-        return userRepository.findById(id);
-    }
-
-    @PutMapping("/update")
-    public void update(@RequestBody User menu){
-        userRepository.update(menu);
+    public void save(@RequestBody User user){
+        user.setRegisterdate(new Date());
+        userRepository.save(user);
     }
 
     @DeleteMapping("/deleteById/{id}")

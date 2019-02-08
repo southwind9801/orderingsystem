@@ -49,6 +49,10 @@
 		delete from t_order where mid = #{mid}
 	</delete>
 
+	<delete id="deleteByUid" parameterType="long">
+		delete from t_order where uid = #{uid}
+	</delete>
+
 	<select id="findAllByState" resultMap="orderMap2">
 		select m.id mid,m.name,m.price,m.flavor,o.id oid,o.date,u.id uid,u.nickname,u.telephone,u.address from t_order o,t_menu m,t_user u where o.mid = m.id and o.uid = u.id and o.state = #{param1} order by oid limit #{param2},#{param3}
 	</select>

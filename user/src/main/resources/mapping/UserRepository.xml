@@ -14,14 +14,6 @@
 		insert into t_user(username,password,nickname,gender,telephone,registerdate,address) values(#{username},#{password},#{nickname},#{gender},#{telephone},#{registerdate},#{address})
 	</insert>
 
-	<select id="findById" resultType="User">
-		select * from t_user where id = #{id}
-	</select>
-
-	<update id="update" parameterType="User">
-		update t_user set username = #{username},password = #{password},nickname = #{nickname},gender = #{gender},telephone = #{telephone},registerdate = #{registerdate},address = #{address} where id = #{id}
-	</update>
-
 	<delete id="deleteById" parameterType="long">
 		delete from t_user where id = #{id}
 	</delete>
