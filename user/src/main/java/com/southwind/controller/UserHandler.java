@@ -14,13 +14,13 @@ public class UserHandler {
     private UserRepository userRepository;
 
     @GetMapping("/findAll/{page}/{limit}")
-    public User findAll(@PathVariable("page") int page, @PathVariable("limit") int limit){
-        UserVO menuVO = new UserVO();
-        menuVO.setCode(0);
-        menuVO.setMsg("");
-        menuVO.setCount(userRepository.count());
-        menuVO.setData(userRepository.findAll((page-1)*limit,limit));
-        return menuVO;
+    public UserVO findAll(@PathVariable("page") int page, @PathVariable("limit") int limit){
+        UserVO userVO = new UserVO();
+        userVO.setCode(0);
+        userVO.setMsg("");
+        userVO.setCount(userRepository.count());
+        userVO.setData(userRepository.findAll((page-1)*limit,limit));
+        return userVO;
     }
 
     @PostMapping("/save")
