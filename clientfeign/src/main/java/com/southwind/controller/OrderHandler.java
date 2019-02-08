@@ -1,9 +1,6 @@
 package com.southwind.controller;
 
-import com.southwind.entity.Menu;
-import com.southwind.entity.Order;
-import com.southwind.entity.OrderVO;
-import com.southwind.entity.User;
+import com.southwind.entity.*;
 import com.southwind.feign.OrderFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,5 +34,18 @@ public class OrderHandler {
     public OrderVO findAllByUid(@RequestParam("page") int page, @RequestParam("limit") int limit,HttpSession session){
         User user = (User) session.getAttribute("user");
         return orderFeign.findAllByUid(user.getId(), page, limit);
+    }
+
+    @GetMapping("/findAllByState")
+    @ResponseBody
+    public OrderVO findAllByState(@RequestParam("page") int page, @RequestParam("limit") int limit){
+        return orderFeign.findAllByState(0, page, limit);
+    }
+
+    @GetMapping("/updateState/{id}/{state}")
+    public String updateState(@PathVariable("id") long id,@PathVariable("state") int state,HttpSession session){
+        Admin admin = (Admin) session.getAttribute("admin");
+        orderFeign.updateState(id,state,admin.getId());
+        return "redirect:/account/redirect/order_handler";
     }
 }

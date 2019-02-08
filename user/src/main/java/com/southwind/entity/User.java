@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Account {
+public class User {
     private long id;
     private String username;
     private String password;

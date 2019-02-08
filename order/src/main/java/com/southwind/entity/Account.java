@@ -13,4 +13,5 @@ public class Account {
     private String gender;
     private String telephone;
     private Date registerdate;
+    private String address;
 }

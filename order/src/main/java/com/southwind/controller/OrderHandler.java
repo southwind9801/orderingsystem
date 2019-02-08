@@ -1,5 +1,6 @@
 package com.southwind.controller;
 
+import com.southwind.entity.Admin;
 import com.southwind.entity.Order;
 import com.southwind.entity.OrderVO;
 import com.southwind.repository.OrderRepository;
@@ -32,4 +33,20 @@ public class OrderHandler {
     public void deleteByMid(@PathVariable("mid") long mid){
         orderRepository.deleteByMid(mid);
     }
+
+    @GetMapping("/findAllByState/{state}/{page}/{limit}")
+    public OrderVO findAllByState(@PathVariable("state") int state, @PathVariable("page") int page, @PathVariable("limit") int limit){
+        OrderVO orderVO = new OrderVO();
+        orderVO.setCode(0);
+        orderVO.setMsg("");
+        orderVO.setCount(orderRepository.countByState(0));
+        orderVO.setData(orderRepository.findAllByState(0,(page-1)*limit,limit));
+        return orderVO;
+    }
+
+    @PutMapping("/updateState/{id}/{state}/{aid}")
+    public void updateState(@PathVariable("id") long id, @PathVariable("state") int state, @PathVariable("aid") long aid){
+        orderRepository.updateState(id,aid,state);
+    }
+
 }

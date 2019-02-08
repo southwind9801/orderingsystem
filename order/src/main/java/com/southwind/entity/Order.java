@@ -11,4 +11,5 @@ public class Order {
     private Menu menu;
     private Admin admin;
     private Date date;
+    private int state;
 }

@@ -7,10 +7,10 @@
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
 </head>
 <body>
-<div class="layui-container" style="width: 800px;height: 600px;margin-top: 0px;padding-top: 60px;">
+<div class="layui-container" style="width: 960px;height: 600px;margin-top: 0px;padding-top: 60px;">
 
     <div style="margin-left: 460px; width: 300px;">
-        <a href="/account/redirect/index">首页</a>&nbsp;&nbsp;|&nbsp;&nbsp;欢迎回来！<a href="borrow.jsp" th:text="${session.user.nickname}"></a><a href="/account/logout">&nbsp;&nbsp;&nbsp;<button class="layui-btn layui-btn-warm layui-btn-radius">退出</button></a>
+        <a href="/account/redirect/index">首页</a>&nbsp;&nbsp;|&nbsp;&nbsp;欢迎回来！<a href="/account/redirect/order" th:text="${session.user.nickname}"></a><a href="/account/logout">&nbsp;&nbsp;&nbsp;<button class="layui-btn layui-btn-warm layui-btn-radius">退出</button></a>
     </div>
 
     <table class="layui-hide" id="test" lay-filter="test"></table>
@@ -40,11 +40,20 @@
                                 return data.menu.flavor
                             }
                         }
-                        // ,{field:'flavor', width:100, title: '分类',templet:function(data){
-                        //         return data.menu.type.name
-                        //     }
-                        // }
                         ,{field:'date',width:300,  title: '下单时间'}
+                        ,{field:'state', width:160, title: '订单状态',templet:function(data){
+                                var result = "";
+                                switch (data.state) {
+                                    case 0:
+                                        result = "未派送";
+                                        break;
+                                    case 1:
+                                        result = "已派送";
+                                        break;
+                                }
+                                return result
+                            }
+                        }
                     ]
                 ]
                 ,page: true

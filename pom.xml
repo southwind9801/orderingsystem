@@ -15,6 +15,7 @@
         <module>menu</module>
         <module>clientfeign</module>
         <module>order</module>
+        <module>user</module>
     </modules>
 
     <!-- 引入Spring Boot依赖 -->

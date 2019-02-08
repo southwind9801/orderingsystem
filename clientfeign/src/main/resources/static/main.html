@@ -15,8 +15,8 @@
             $("#menu_add").click(function(){
                 $("iframe").attr("src","/menu/prepareSave");
             });
-            $("#order_manage").click(function(){
-                $("iframe").attr("src","reader_add.jsp");
+            $("#order_handler").click(function(){
+                $("iframe").attr("src","/account/redirect/order_handler");
             });
             $("#user_manage").click(function(){
                 $("iframe").attr("src","reader_manage.jsp");
@@ -58,7 +58,7 @@
                     <dl class="layui-nav-child">
                         <dd class="layui-this"><a id="menu_manage" href="javascript:void(0)">查询菜品</a></dd>
                         <dd><a id="menu_add" href="javascript:void(0)">添加菜品</a></dd>
-                        <dd><a id="order_manage" href="javascript:void(0)">订单审核</a></dd>
+                        <dd><a id="order_handler" href="javascript:void(0)">订单审核</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">

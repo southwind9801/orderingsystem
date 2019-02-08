@@ -12,6 +12,7 @@
         <module name="menu" />
         <module name="order" />
         <module name="registrycenter" />
+        <module name="user" />
       </profile>
     </annotationProcessing>
   </component>
@@ -24,6 +25,7 @@
       <module name="order" options="-parameters" />
       <module name="orderingsystem" options="-parameters" />
       <module name="registrycenter" options="-parameters" />
+      <module name="user" options="-parameters" />
     </option>
   </component>
 </project>

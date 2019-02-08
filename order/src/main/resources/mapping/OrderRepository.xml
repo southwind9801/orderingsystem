@@ -5,7 +5,8 @@
 	<resultMap id="orderMap" type="Order">
 		<id property="id" column="oid"/>
 		<result property="date" column="date"/>
-		<!-- 映射user -->
+		<result property="state" column="state"/>
+		<!-- 映射menu -->
 		<association property="menu" javaType="Menu">
 			<id property="id" column="mid"/>
 			<result property="name" column="name"/>
@@ -14,12 +15,30 @@
 		</association>
 	</resultMap>
 
+	<resultMap id="orderMap2" type="Order">
+		<id property="id" column="oid"/>
+		<result property="date" column="date"/>
+		<!-- 映射menu -->
+		<association property="menu" javaType="Menu">
+			<id property="id" column="mid"/>
+			<result property="name" column="name"/>
+			<result property="price" column="price"/>
+			<result property="flavor" column="flavor"/>
+		</association>
+		<!-- 映射user -->
+		<association property="user" javaType="User">
+			<id property="id" column="uid"/>
+			<result property="nickname" column="nickname"/>
+			<result property="telephone" column="telephone"/>
+			<result property="address" column="address"/>
+		</association>
+	</resultMap>
 	<insert id="save" parameterType="Order">
-		insert into t_order(uid,mid,aid,date) values(#{user.id},#{menu.id},#{admin.id},#{date})
+		insert into t_order(uid,mid,aid,date,state) values(#{user.id},#{menu.id},#{admin.id},#{date},0)
 	</insert>
 	
 	<select id="findAllByUid" resultMap="orderMap">
-		select m.id mid,m.name,m.price,m.flavor,o.id oid,o.date from t_order o,t_menu m where o.mid = m.id and o.uid = #{param1} order by oid limit #{param2},#{param3}
+		select m.id mid,m.name,m.price,m.flavor,o.id oid,o.date,o.state from t_order o,t_menu m where o.mid = m.id and o.uid = #{param1} order by oid limit #{param2},#{param3}
 	</select>
 
 	<select id="countByUid" parameterType="long" resultType="int">
@@ -29,5 +48,17 @@
 	<delete id="deleteByMid" parameterType="long">
 		delete from t_order where mid = #{mid}
 	</delete>
+
+	<select id="findAllByState" resultMap="orderMap2">
+		select m.id mid,m.name,m.price,m.flavor,o.id oid,o.date,u.id uid,u.nickname,u.telephone,u.address from t_order o,t_menu m,t_user u where o.mid = m.id and o.uid = u.id and o.state = #{param1} order by oid limit #{param2},#{param3}
+	</select>
+
+	<select id="countByState" parameterType="int" resultType="int">
+		select count(*) from t_order where state = #{state}
+	</select>
+
+	<update id="updateState">
+		update t_order set aid = #{param2},state = #{param3} where id = #{param1}
+	</update>
 
 </mapper>

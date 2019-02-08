@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+</head>
+<body class="layui-layout-body">
+<div class="layui-container" style="margin-top: 50px;width: 750px;width: 1070px">
+
+    <table class="layui-hide" id="test" style="width: 300px" lay-filter="test"></table>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="send">已派送</a>
+    </script>
+    <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+    <script>
+        layui.use('table', function(){
+            var table = layui.table;
+
+            table.render({
+                elem: '#test'
+                ,url:'/order/findAllByState'
+                ,title: '订单列表'
+                ,cols: [
+                    [
+                        {field:'id', width:80, title: '编号', sort: true}
+                        , {
+                        field: 'name', width: 160, title: '菜品', templet: function (data) {
+                                return data.menu.name
+                            }
+                        }
+                        , {
+                        field: 'price', width: 80, title: '单价', templet: function (data) {
+                                return data.menu.price
+                            }
+                        }
+                        ,{field:'flavor', width:80, title: '口味',templet:function(data){
+                                return data.menu.flavor
+                            }
+                        }
+                        ,{field:'nickname', width:80, title: '用户',templet:function(data){
+                                return data.user.nickname
+                            }
+                        }
+                        ,{field:'telephone', width:140, title: '联系电话',templet:function(data){
+                                return data.user.telephone
+                            }
+                        }
+                        ,{field:'address', width:140, title: '地址',templet:function(data){
+                                return data.user.address
+                            }
+                        }
+                        ,{field:'date',width:220,  title: '下单时间'}
+                        ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:90}
+                ]
+                ]
+                ,page: true
+            });
+
+            //监听行工具事件
+            table.on('tool(test)', function(obj){
+                var data = obj.data;
+                if(obj.event === 'send'){
+                    window.location.href="/order/updateState/"+data.id+"/1";
+                }
+            });
+        });
+    </script>
+
+</div>
+<script>
+    //二级菜单联动
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+</body>
+</html>

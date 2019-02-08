@@ -41,7 +41,6 @@ public class MenuHandler {
 
     @GetMapping("/findById/{id}")
     public Menu findById(@PathVariable("id") long id){
-        Menu menu = menuRepository.findById(id);
         return menuRepository.findById(id);
     }
 
@@ -51,7 +50,7 @@ public class MenuHandler {
     }
 
     @DeleteMapping("/deleteById/{id}")
-    public void deleteById(@PathVariable("id") int id){
+    public void deleteById(@PathVariable("id") long id){
         menuRepository.deleteById(id);
     }
 }
