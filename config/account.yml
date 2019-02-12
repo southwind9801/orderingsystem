@@ -7,7 +7,7 @@ spring:
     name: orderingsystem
     url: jdbc:mysql://localhost:3306/orderingsystem?useUnicode=true&characterEncoding=UTF-8
     username: root
-    password: 19900310
+    password: root
 eureka:
   client:
     service-url:
