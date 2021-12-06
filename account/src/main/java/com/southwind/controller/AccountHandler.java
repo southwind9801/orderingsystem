@@ -3,19 +3,23 @@ package com.southwind.controller;
 import com.southwind.entity.Account;
 import com.southwind.repository.AdminRepository;
 import com.southwind.repository.UserRepository;
+import org.apache.ibatis.annotations.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 @RestController
 @RequestMapping("/account")
 public class AccountHandler {
 
-    @Autowired
+    @Resource
     private UserRepository userRepository;
-    @Autowired
+
+    @Resource
     private AdminRepository adminRepository;
 
     @GetMapping("/login/{username}/{password}/{type}")
